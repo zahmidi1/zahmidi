@@ -122,121 +122,44 @@
                                         </th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr class="unread clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="fa fa-star starred"></i></span></td>
-                                        <td class="name">John Doe</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td><i class="fas fa-paperclip"></i></td>
-                                        <td class="mail-date">13:14</td>
-                                    </tr>
-                                    <tr class="unread clickable-row" data-href="mail-view.html">
+                                    <?php
+                                    $query = "SELECT * FROM `contact`";
+                                    $data = dataAccess::desplaydata($query);
+                                    while ($row = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+                                        $id = $row[0];
+                                        $nom = $row[1];
+                                        $email = $row[2];
+                                        $telephone = $row[3];
+                                        $conntent = $row[4];
+                                        $date = $row[5];
+
+                                    ?>
+
+
+                                    <tr class="unread clickable-row" data-href="#">
                                         <td>
                                             <input type="checkbox" class="checkmail">
                                         </td>
                                         <td><span class="mail-important"><i class="far fa-star"></i></span>
                                         </td>
-                                        <td class="name">Envato Account</td>
-                                        <td class="subject">Important account security update from Envato</td>
+                                        <td class="name"><?php echo $nom ?></td>
+                                        <td class="subject"><?php echo $conntent ?></td>
                                         <td></td>
-                                        <td class="mail-date">8:42</td>
+                                        <td class="mail-date"><?php echo $date ?></td>
                                     </tr>
-                                    <tr class="clickable-row" data-href="mail-view.html">
+                                    <?php }; ?>
+                                    <tr class="clickable-row" data-href="#">
                                         <td>
                                             <input type="checkbox" class="checkmail">
                                         </td>
                                         <td><span class="mail-important"><i class="far fa-star"></i></span>
                                         </td>
                                         <td class="name">Twitter</td>
-                                        <td class="subject">HRMS Bootstrap Admin Template</td>
+                                        <td class="subject">HRMS Bootstrap </td>
                                         <td></td>
                                         <td class="mail-date">30 Nov</td>
-                                    </tr>
-                                    <tr class="unread clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">Richard Parker</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td></td>
-                                        <td class="mail-date">18 Sep</td>
-                                    </tr>
-                                    <tr class="clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">John Smith</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td></td>
-                                        <td class="mail-date">21 Aug</td>
-                                    </tr>
-                                    <tr class="clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">me, Robert Smith (3)</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td></td>
-                                        <td class="mail-date">1 Aug</td>
-                                    </tr>
-                                    <tr class="unread clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">Codecanyon</td>
-                                        <td class="subject">Welcome To Codecanyon</td>
-                                        <td></td>
-                                        <td class="mail-date">Jul 13</td>
-                                    </tr>
-                                    <tr class="clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">Richard Miles</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td><i class="fas fa-paperclip"></i></td>
-                                        <td class="mail-date">May 14</td>
-                                    </tr>
-                                    <tr class="unread clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="far fa-star"></i></span>
-                                        </td>
-                                        <td class="name">John Smith</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td></td>
-                                        <td class="mail-date">11/11/16</td>
-                                    </tr>
-                                    <tr class="clickable-row" data-href="mail-view.html">
-                                        <td>
-                                            <input type="checkbox" class="checkmail">
-                                        </td>
-                                        <td><span class="mail-important"><i class="fa fa-star starred"></i></span></td>
-                                        <td class="name">Mike Litorus</td>
-                                        <td class="subject">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit</td>
-                                        <td></td>
-                                        <td class="mail-date">10/31/16</td>
                                     </tr>
                                 </tbody>
                             </table>
