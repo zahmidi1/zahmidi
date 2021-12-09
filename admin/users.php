@@ -1,10 +1,36 @@
 ﻿<?php include "./php/header.php" ?>
 
 
-<?php include "./php/ssidebar.php" ?>
 
 
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li> <a href="index.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                </li>
+                <li class="list-divider"></li>
 
+                <li> <a href="client.php"><i class="fas fa-user"></i> <span> Propriétaire</span></a>
+                </li>
+                <li> <a href="ajouterP.php"><i class="fas fa-user-plus"></i> <span>Ajoute
+                            Propriétaire</span> </a>
+                </li>
+                <li> <a href="batiment.php"><i class="fas fa-key"></i> <span> Batiment/ villa </span></a>
+                </li>
+                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Admin </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li><a class="active" href="users.php">Tout </a></li>
+                        <li><a href="#"> Ajoute</a></li>
+                    </ul>
+                </li>
+                <li> <a href="#"><i class="fas fa-clipboard-list"></i><span> Charges</span></a> </li>
+                <li> <a href="#"><i class="fas fa-mail-bulk"></i><span> Email</span></a> </li>
+                <li> <a href="compose.php"><i class="fas fa-paper-plane"></i><span>envoiyer Email</span></a> </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 
@@ -15,8 +41,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-12">
                     <div class="mt-5">
-                        <h4 class="card-title float-left mt-2">user</h4> <a href="add-customer.html"
-                            class="btn btn-primary float-right veiwbutton">ajouter user</a>
+                        <h4 class="card-title float-left mt-2">user</h4> <a href="add-customer.html" class="btn btn-primary float-right veiwbutton">ajouter user</a>
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -88,11 +113,11 @@
                                         $telephone = $row_user[5];
                                     ?>
 
-                                    <tr>
-                                        <td><?php echo $nom    ?></td>
-                                        <td><?php echo   $prenom  ?></td>
-                                        <td>
-                                            <?php
+                                        <tr>
+                                            <td><?php echo $nom    ?></td>
+                                            <td><?php echo   $prenom  ?></td>
+                                            <td>
+                                                <?php
                                                 if ($status == 0) {
                                                     echo "
                                                           <div class='actions'> <a href='#'
@@ -105,28 +130,22 @@
                                                     </div>";
                                                 }
                                                 ?>
-                                        </td>
+                                            </td>
 
 
 
-                                        <td><?php echo $email ?></td>
-                                        <td><?php echo $telephone ?></td>
+                                            <td><?php echo $email ?></td>
+                                            <td><?php echo $telephone ?></td>
 
 
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action"> <a href="#"
-                                                    class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                                    aria-expanded="false"><i
-                                                        class="fas fa-ellipsis-v ellipse_color"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"
-                                                        href="edit-room.html"><i class="fas fa-pencil-alt m-r-5"></i>
-                                                        Edit</a> <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#delete_asset"><i
-                                                            class="fas fa-trash-alt m-r-5"></i> Delete</a>
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-room.html"><i class="fas fa-pencil-alt m-r-5"></i>
+                                                            Edit</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
 
                                     <?php  }
                                     ?>
