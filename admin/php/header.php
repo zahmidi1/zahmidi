@@ -56,10 +56,7 @@ include "./php/conn.php";
                             <ul class="notification-list">
                                 <li class="notification-message">
                                     <a href="#">
-                                        <div class="media"> <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image"
-                                                    src="assets/img/profiles/avatar-02.jpg">
-                                            </span>
+                                        <div class="media">
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Carlson Tech</span> has
                                                     approved <span class="noti-title">your estimate</span></p>
@@ -71,10 +68,7 @@ include "./php/conn.php";
                                 </li>
                                 <li class="notification-message">
                                     <a href="#">
-                                        <div class="media"> <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image"
-                                                    src="assets/img/profiles/avatar-11.jpg">
-                                            </span>
+                                        <div class="media">
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">International Software
                                                         Inc</span> has sent you a invoice in the amount of <span

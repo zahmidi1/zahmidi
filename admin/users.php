@@ -26,7 +26,7 @@
                     </ul>
                 </li>
                 <li> <a href="#"><i class="fas fa-clipboard-list"></i><span> Charges</span></a> </li>
-                <li> <a href="#"><i class="fas fa-mail-bulk"></i><span> Email</span></a> </li>
+                <li> <a href="inbox.php"><i class="fas fa-mail-bulk"></i><span> Email</span></a> </li>
                 <li> <a href="compose.php"><i class="fas fa-paper-plane"></i><span>envoiyer Email</span></a> </li>
             </ul>
         </div>
