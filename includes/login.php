@@ -11,11 +11,7 @@ if (isset($_POST['btnlogin'])) {
 
     if (!empty($data)) {
 
-
-
         while ($row = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
-
-
 
             $db_id_client = $row[0];
             $db_nom = $row[1];
@@ -33,14 +29,10 @@ if (isset($_POST['btnlogin'])) {
             $_SESSION["db_email"] = $db_email;
             $_SESSION["db_telephone"] = $db_telephone;
             $_SESSION["db_paswored"] = $db_mot_de_passe;
-            // header("location: ../home.php");
-            echo 'home';
+            header("location: ../home.php");
         } else {
-            // header("location: ../index.php");
-            echo 'index';
+            header("location: ../index.php");
         }
-    } else {
-        echo 'noooooooo';
     }
 }
 
