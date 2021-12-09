@@ -1,3 +1,13 @@
+<?php
+session_start();
+ob_start();
+if (isset($_SESSION['admin'])) {
+    header('location:admin');
+}
+if (isset($_SESSION['client'])) {
+    header('location: ./home.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

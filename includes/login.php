@@ -1,40 +1,51 @@
 <?php include "../admin/php/conn.php" ?>
 <?php session_start() ?>
 <?php
+
+
+
+
 if (isset($_POST['btnlogin'])) {
-    $email =  $_POST['email'];
-    $Password =  $_POST['Password'];
+    $user_email = $_POST['email'];
+    $password = $_POST['Password'];
 
 
-    $query = "SELECT * FROM `client` WHERE `email`= '$email' ";
-    $data = dataAccess::desplaydata($query);
+    $sql = "SELECT * FROM `users` WHERE `email`= '$user_email' ";
+    $query = dataAccess::desplaydata($sql);
 
-    if (!empty($data)) {
 
-        while ($row = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+    if (!empty($query)) {
 
-            $db_id_client = $row[0];
-            $db_nom = $row[1];
-            $db_prenom = $row[2];
-            $db_email = $row[3];
-            $db_mot_de_passe = $row[4];
-            $db_telephone = $row[5];
-            $db_date_denter = $row[6];
-        }
+        if ($query->rowCount() < 1) {
 
-        if ($email === $db_email && $db_mot_de_passe === $Password) {
-            $_SESSION["db_id_user"] = $db_id_client;
-            $_SESSION["db_nom"] = $db_nom;
-            $_SESSION["db_prenom"] = $db_prenom;
-            $_SESSION["db_email"] = $db_email;
-            $_SESSION["db_telephone"] = $db_telephone;
-            $_SESSION["db_paswored"] = $db_mot_de_passe;
-            header("location: ../home.php");
+            $sql2 = "SELECT * FROM `client` WHERE `email`= '$user_email' ";
+            $query2 = dataAccess::desplaydata($sql2);
+
+            if ($query2->rowCount() < 1) {
+                $_SESSION['error'] = 'Cannot find account with the username';
+            } else {
+                $row = $query2->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT);
+                if (password_verify($password,  $row[4])) {
+                    $_SESSION['client'] = $row[0];
+                } else {
+                    $_SESSION['error'] = 'Incorrect password';
+                }
+            }
         } else {
-            header("location: ../index.php");
+            $row = $query->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT);
+            if (password_verify($password,  $row[6])) {
+                $_SESSION['admin'] = $row[0];
+            } else {
+                $_SESSION['error'] = 'Incorrect password';
+            }
         }
     }
+} else {
+    $_SESSION['error'] = 'Input admin credentials first';
 }
+
+header('location: ../index.php');
+
 
 
 ?>

@@ -1,7 +1,21 @@
 <?php
+
 session_start();
 ob_start();
-if ($_SESSION["db_email"]) {
+if ($_SESSION['client']) {
+    include "./admin/php/conn.php";
+    $db_id_user = $_SESSION['client'];
+
+    $query = "SELECT * FROM client where id_client= $db_id_user";
+    $data = dataAccess::desplaydata($query);
+    while ($row_client = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+        $id_client = $row_client[0];
+        $nom = $row_client[1];
+        $prenom = $row_client[2];
+        $email = $row_client[3];
+        $mot_de_passe = $row_client[4];
+        $telephone = $row_client[5];
+    }
 
 ?>
 
@@ -9,7 +23,7 @@ if ($_SESSION["db_email"]) {
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "./admin/php/conn.php" ?>
+
 
 
 
@@ -392,7 +406,7 @@ if ($_SESSION["db_email"]) {
     </div>
     <?php
 
-        $db_id_user = $_SESSION["db_id_user"];
+
 
         $query = "SELECT * FROM paiment where id_client= $db_id_user";
 
@@ -438,7 +452,15 @@ if ($_SESSION["db_email"]) {
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-white border border-black-50" id="inputGroup-sizing-default"><i
                                 class="fas fa-user text-success"></i></span>
-                        <input type="text" placeholder="Nom" name="nom" value="<?php echo $_SESSION["db_nom"]; ?>"
+                        <input type="text" placeholder="Nom" name="nom" value="<?php echo $nom; ?>" class="form-control"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white border-black-50" id="inputGroup-sizing-default"><i
+                                class="fas fa-phone-square-alt text-success"></i></span>
+                        <input type="text" placeholder="Téléphone" name="telephone" value="<?php echo $telephone; ?>"
                             class="form-control" aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default">
                     </div>
@@ -446,19 +468,10 @@ if ($_SESSION["db_email"]) {
                 <div class="col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-white border-black-50" id="inputGroup-sizing-default"><i
-                                class="fas fa-phone-square-alt text-success"></i></span>
-                        <input type="text" placeholder="Téléphone" name="telephone"
-                            value="<?php echo $_SESSION["db_telephone"]; ?>" class="form-control"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-white border-black-50" id="inputGroup-sizing-default"><i
                                 class="fas fa-at text-success"></i></span>
-                        <input type="text" placeholder="Email " name="email"
-                            value="<?php echo $_SESSION["db_email"]; ?>" class="form-control"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" placeholder="Email " name="email" value="<?php echo $email; ?>"
+                            class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
                     </div>
                 </div>
                 <div class="col-12">
@@ -617,6 +630,6 @@ if ($_SESSION["db_email"]) {
 <?php
 } else {
 
-    header("location: ../index.php");
+    header("location: index.php");
 }
 ?>
