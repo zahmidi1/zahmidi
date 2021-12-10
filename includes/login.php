@@ -22,13 +22,13 @@ if (isset($_POST['btnlogin'])) {
             $query2 = dataAccess::desplaydata($sql2);
 
             if ($query2->rowCount() < 1) {
-                $_SESSION['error'] = 'Cannot find account with the username';
+                $_SESSION['error'] = "L’adresse e-mail que vous avez saisie n’est pas associée à un compte. <a href='#' class='alert-link'>Trouvez votre compte et connectez-vous</a> ";
             } else {
                 $row = $query2->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT);
                 if (password_verify($password,  $row[4])) {
                     $_SESSION['client'] = $row[0];
                 } else {
-                    $_SESSION['error'] = 'Incorrect password';
+                    $_SESSION['error'] = "Le mot de passe entré est incorrect. <a href='#' class='alert-link'>Vous l’avez oublié ?</a> ";
                 }
             }
         } else {
@@ -36,15 +36,16 @@ if (isset($_POST['btnlogin'])) {
             if (password_verify($password,  $row[6])) {
                 $_SESSION['admin'] = $row[0];
             } else {
-                $_SESSION['error'] = 'Incorrect password';
+                $_SESSION['error'] = "Le mot de passe entré est incorrect. <a href='#' class='alert-link'>Vous l’avez oublié ?</a> ";
             }
         }
     }
 } else {
-    $_SESSION['error'] = 'Input admin credentials first';
+    $_SESSION['error'] = "input";
 }
 
 header('location: ../index.php');
+
 
 
 
