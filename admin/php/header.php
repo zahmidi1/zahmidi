@@ -38,9 +38,9 @@ include "./php/conn.php";
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="index.html" class="logo"> <img src="assets/img/Logo.png" width="50" height="70" alt="logo">
+                <a href="index" class="logo"> <img src="assets/img/Logo.png" width="50" height="70" alt="logo">
                     <span class="logoclass">jardin de asilah</span> </a>
-                <a href="index.html" class="logo logo-small"> <img src="assets/img/Logo.png" alt="Logo" width="30"
+                <a href="index" class="logo logo-small"> <img src="assets/img/Logo.png" alt="Logo" width="30"
                         height="30"> </a>
             </div>
             <a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
@@ -95,8 +95,8 @@ include "./php/conn.php";
                                 <h6>RADIA ZAHMIDI</h6>
                                 <p class="text-muted mb-0">Administrator</p>
                             </div>
-                        </div> <a class="dropdown-item" href="profile.html">My Profile</a> <a class="dropdown-item"
-                            href="settings.html">Account Settings</a> <a class="dropdown-item"
+                        </div> <a class="dropdown-item" href="profile">My Profile</a> <a class="dropdown-item"
+                            href="settings">Account Settings</a> <a class="dropdown-item"
                             href="./php/logout.php">Logout</a>
                     </div>
                 </li>
