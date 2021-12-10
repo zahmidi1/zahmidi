@@ -167,8 +167,7 @@
                                                         data-id="<?= $id_client; ?>"><i
                                                             class="fas fa-euro-sign m-r-5"></i> payer</a>
                                                     <?php $ecrypt = urlencode(base64_encode($id_client * 123456789)) ?>
-                                                    <a class="dropdown-item"
-                                                        href="payments.php?id=<?php echo $ecrypt ?>"><i
+                                                    <a class="dropdown-item" href="payments?id=<?php echo $ecrypt ?>"><i
                                                             class="fas fa-info m-r-5"></i> info</a>
 
                                                 </div>

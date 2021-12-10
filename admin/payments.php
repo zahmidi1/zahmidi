@@ -147,7 +147,7 @@
                                         ?>
                                     <tr>
                                         <?php $ecrypt_fac = urlencode(base64_encode($id * 123456789)) ?>
-                                        <td><a href="invoice-view.php?P=<?php echo $ecrypt_fac ?>">#FACTUR</a>
+                                        <td><a href="invoice-view?P=<?php echo $ecrypt_fac ?>">#FACTUR</a>
                                         </td>
                                         <td><?php echo $nom . " " . $prenom  ?></td>
 

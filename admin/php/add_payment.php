@@ -20,12 +20,12 @@ if (isset($_POST['paiment'])) {
     $query = dataAccess::update($sql);
     if (!empty($query)) {
         $_SESSION['success'] = 'Admin profile add successfully';
-        header('location: ../invoice-view.php');
+        header('location: ../invoice-view');
     } else {
         $_SESSION['error'] = "helooo";
-        header('location: ../client.php');
+        header('location: ../client');
     }
 } else {
     $_SESSION['error'] = 'Fill up add form first';
-    header('location: ../client.php');
+    header('location: ../client');
 }

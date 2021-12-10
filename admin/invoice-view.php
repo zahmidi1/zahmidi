@@ -41,7 +41,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-5 col-4">
                     <div class="mt-5">
-                        <h4 class="card-title float-left mt-2">Invoice</h4>
+                        <h4 class="card-title float-left mt-2">FACTUR</h4>
                     </div>
                 </div>
                 <div class="col-sm-7 col-8 text-right">
@@ -52,6 +52,35 @@
                             <button class="btn btn-white"><i class="fas fa-print fa-lg"></i> Print</button>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-12">
+                    <?php
+
+                    if (isset($_SESSION['error'])) {
+                        echo " <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+					<strong>Error!</strong> A <a href='#' class='alert-link'>problem</a> has been occurred
+					while submitting your data." . $_SESSION['error'] . "
+					<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+					<span aria-hidden='true'>&times;</span>
+					</button>
+					</div> ";
+                        unset($_SESSION['error']);
+                    }
+
+
+                    if (isset($_SESSION['success'])) {
+                        echo "
+					
+					<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>Success!</strong> Your <a href='#' class='alert-link'>message</a> has been sent
+                    successfully." . $_SESSION['success'] . "
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                    </div>
+					";
+                        unset($_SESSION['success']);
+                    } ?>
                 </div>
             </div>
         </div>
@@ -64,11 +93,12 @@
 
         $ecrypt = $_GET['P'];
 
-        $ecrypt_1 = base64_decode(urldecode($ecrypt));
 
-        $id_cli =  $ecrypt_1 / 123456789;
 
-        if (!empty($id_cli)) {
+        if (!empty($ecrypt)) {
+            $ecrypt_1 = base64_decode(urldecode($ecrypt));
+
+            $id_cli =  $ecrypt_1 / 123456789;
             $getid =  "where id_paiment =$id_cli";
         } else {
             $getid =  "ORDER BY `paiment`.`id_paiment`DESC";
