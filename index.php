@@ -2,10 +2,10 @@
 session_start();
 ob_start();
 if (isset($_SESSION['admin'])) {
-    header('location:admin');
+    header('location:admin/index');
 }
 if (isset($_SESSION['client'])) {
-    header('location: ./home.php');
+    header('location: ./home');
 }
 ?>
 <!DOCTYPE html>

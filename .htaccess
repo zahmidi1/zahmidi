@@ -1,3 +1,5 @@
- ErrorDocument 404    http://localhost:8080/zahmidi/admin/error-404.php
-
- 
+ ErrorDocument 404     /zahmidi/admin/error-404.php
+  
+RewriteEngine on  
+RewriteRule ^()$ $1.php [NC,L]
+RewriteRule ^(index|home|admin/index|home|admin/client|admin/batiment|admin/ajouterP|admin/users|admin/inbox|admin/compose)$ $1.php [NC,L]
