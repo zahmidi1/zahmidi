@@ -1,5 +1,5 @@
  ErrorDocument 404     /zahmidi/error-404.php
   
 RewriteEngine on  
-RewriteRule ^()$ $1.php [NC,L]
+ 
 RewriteRule ^(index|home)$ $1.php [NC,L]

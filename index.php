@@ -7,6 +7,7 @@ if (isset($_SESSION['admin'])) {
 if (isset($_SESSION['client'])) {
     header('location: ./home');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +37,26 @@ if (isset($_SESSION['client'])) {
     <div class="container-fluid  ">
         <div class="row ">
             <div class="col-md-4 col-sm-12  ">
+
+
                 <div style="height:100vh;" class="d-flex justify-content-center align-items-center">
+
                     <form method="POST" action="./includes/login.php">
+                        <div class="d-flex justify-content-center">
+                            <?php
+
+                            if (isset($_SESSION['error'])) {
+                                echo " <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+					<strong>Error!</strong>" . $_SESSION['error'] . "
+					 
+					</div> ";
+                                unset($_SESSION['error']);
+                            }
+
+
+                            ?>
+                        </div>
+
                         <div class="d-flex justify-content-center"> <img src="img/logo.png" alt=""
                                 class="h-auto img-fluid mb-3" width="350px"></div>
 
