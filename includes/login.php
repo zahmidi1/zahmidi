@@ -2,9 +2,6 @@
 <?php session_start() ?>
 <?php
 
-
-
-
 if (isset($_POST['btnlogin'])) {
     $user_email = $_POST['email'];
     $password = $_POST['Password'];
@@ -33,10 +30,17 @@ if (isset($_POST['btnlogin'])) {
             }
         } else {
             $row = $query->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT);
-            if (password_verify($password,  $row[6])) {
-                $_SESSION['admin'] = $row[0];
+            if ($row[3] == 1) {
+
+
+                if (password_verify($password,  $row[6])) {
+                    $_SESSION['admin'] = $row[0];
+                } else {
+
+                    $_SESSION['error'] = "Le mot de passe entré est incorrect admin. <a href='#' class='alert-link'>Vous l’avez oublié ?</a> /";
+                }
             } else {
-                $_SESSION['error'] = "Le mot de passe entré est incorrect. <a href='#' class='alert-link'>Vous l’avez oublié ?</a> ";
+                $_SESSION['error'] = "voutre connte ne pas active. <a href='#' class='alert-link'>voud devait coonetat Manager?</a> ";
             }
         }
     }

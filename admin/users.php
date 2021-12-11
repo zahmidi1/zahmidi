@@ -104,7 +104,7 @@
 
                                     <?php
 
-                                    $query = "SELECT * FROM users";
+                                    $query = "SELECT * FROM users where is_admin=0";
                                     $data = dataAccess::desplaydata($query);
                                     while ($row_user = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
                                         $id = $row_user[0];
@@ -122,12 +122,12 @@
                                             <?php
                                                 if ($status == 0) {
                                                     echo "
-                                                          <div class='actions'> <a href='#'
+                                                          <div class='actions'> <a href='?noactive=" . $id . "'
                                                             class='btn btn-sm bg-danger-light mr-2'>no active</a>
                                                     </div>";
                                                 } else {
                                                     echo "
-                                                        <div class='actions'> <a href='#'
+                                                        <div class='actions'> <a href='?active=" . $id . "'
                                                             class='btn btn-sm bg-success-light mr-2'>active </a>
                                                     </div>";
                                                 }
@@ -165,6 +165,37 @@
             </div>
         </div>
     </div>
+    <?php
+    if (isset($_GET['active'])) {
+        $id_active = $_GET['active'];
+        $sql = "UPDATE `users` SET `status` = '0' WHERE `users`.`id_user` = $id_active; ";
+        $query = dataAccess::update($sql);
+        if (!empty($query)) {
+            $_SESSION['success'] = 'update status';
+            echo "ok";
+        } else {
+
+            $_SESSION['error'] = "not update satatus ";
+            echo "no";
+        }
+        header('location:users');
+    }
+
+
+    if (isset($_GET['noactive'])) {
+        $id_noactive = $_GET['noactive'];
+        $sql = "UPDATE `users` SET `status` = '1' WHERE `users`.`id_user` = $id_noactive; ";
+        $query = dataAccess::update($sql);
+        if (!empty($query)) {
+            $_SESSION['success'] = 'update status';
+            echo "ok";
+        } else {
+            $_SESSION['error'] = "not update satatus ";
+            echo "no";
+        }
+        header('location:users');
+    }
+    ?>
     <div id="delete_asset" class="modal fade delete-modal" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
