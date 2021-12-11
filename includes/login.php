@@ -48,7 +48,7 @@ if (isset($_POST['btnlogin'])) {
     $_SESSION['error'] = "input";
 }
 
-header('location: ../index.php');
+header('location: ../index');
 
 
 
