@@ -2,7 +2,7 @@
   
 RewriteEngine on  
  
-RewriteRule ^(payments|invoice-view|index|home|client|batiment|ajouterP|users|inbox|compose)$ $1.php [NC,L]
+RewriteRule ^(profile|payments|invoice-view|index|home|client|batiment|ajouterP|users|inbox|compose)$ $1.php [NC,L]
 
 
 

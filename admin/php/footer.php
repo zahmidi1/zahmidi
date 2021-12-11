@@ -14,11 +14,35 @@
 <script src="assets/js/script.js"></script>
 <script>
 function getCode(id) {
-
     $(function() {
         $("#code_client").val(id);
     });
 }
+$('#pwd').keyup(function() {
+
+    if ($('#pwd').val().length == 0) {
+        $('#cpwd').attr("disabled", true);
+    } else {
+        $('#cpwd').removeAttr("disabled");
+    }
+});
+$('#cpwd').keyup(function() {
+    $('#savePaswored').attr("disabled", true);
+    var pwd = $('#pwd').val();
+    var cpwd = $('#cpwd').val();
+    if (cpwd != pwd) {
+        $('#show').html(
+            "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>erroe!</strong> <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span> </button> </div>"
+        );
+        $('#savePaswored').attr("disabled", true);
+
+    } else {
+        $('#show').html(
+            "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>Success!</strong> <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span> </button> </div>"
+        );
+        $('#savePaswored').removeAttr("disabled");
+    }
+});
 
 
 // $("#ajouteC").on('click', function() {

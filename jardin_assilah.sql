@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 08 déc. 2021 à 14:17
+-- Généré le : jeu. 09 déc. 2021 à 23:04
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.11
 
@@ -176,7 +176,11 @@ INSERT INTO `paiment` (`id_paiment`, `paiment`, `date_paiment`, `status`, `id_cl
 (11, 8000, '2021-12-15', 'Quache', 43, '2021-11-25'),
 (12, 7000, '2021-12-02', 'cheque N: 888989898', 1, '2021-12-06'),
 (13, 55000, '2021-12-17', 'verment', 2, '2021-12-06'),
-(14, 6000, '2021-12-23', 'verment', 1, '2021-12-06');
+(14, 6000, '2021-12-23', 'verment', 1, '2021-12-06'),
+(15, 5654, '2021-12-08', 'verment', 1, '2021-12-09'),
+(16, 45345, '2021-12-08', 'cheque N: 435355454', 1, '2021-12-09'),
+(17, 45355, '2021-12-09', 'cheque N: 444444', 1, '2021-12-09'),
+(18, 5000, '2021-12-07', 'verment', 2, '2021-12-09');
 
 -- --------------------------------------------------------
 
@@ -192,6 +196,11 @@ CREATE TABLE `users` (
   `email` varchar(200) NOT NULL,
   `telephone` varchar(15) NOT NULL,
   `paswored` varchar(200) NOT NULL,
+  `rool` varchar(15) NOT NULL,
+  `naissance` varchar(11) NOT NULL,
+  `pays` varchar(10) NOT NULL,
+  `ville` varchar(10) NOT NULL,
+  `Adresse` varchar(30) NOT NULL,
   `is_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -199,8 +208,9 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id_user`, `nom`, `prenom`, `status`, `email`, `telephone`, `paswored`, `is_admin`) VALUES
-(1, 'ZAHMIDI', 'RADIYA', 1, 'zahmidi@gmail.com', '', '$2y$10$WQ7pNV.Sl4iBvdHhxtiWmOTmGFd01gDro0X6GWBrzkfB3HP4VNP3m', 0);
+INSERT INTO `users` (`id_user`, `nom`, `prenom`, `status`, `email`, `telephone`, `paswored`, `rool`, `naissance`, `pays`, `ville`, `Adresse`, `is_admin`) VALUES
+(1, 'ZAHMIDI', 'RADIYA', 1, 'zahmidi@gmail.com', '0618181155', '$2y$10$m50lBmJuedwDaL7e9vNDGeQvY/lr6nuKJOEXpWnAqjy5tWa4LqdKS', 'Administratrice', '24-03-1986', 'maroc', 'assilah', 'jardin de assilah C2 1.3', 0),
+(6, 'LEHYEN', 'MALIKA', 1, 'MALIKA@gmail.com', '0618181155', '$2y$10$WQ7pNV.Sl4iBvdHhxtiWmOTmGFd01gDro0X6GWBrzkfB3HP4VNP3m', 'Manager', '', '', '', '', 1);
 
 --
 -- Index pour les tables déchargées
@@ -286,13 +296,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `paiment`
 --
 ALTER TABLE `paiment`
-  MODIFY `id_paiment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_paiment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
