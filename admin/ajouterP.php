@@ -1,7 +1,5 @@
 ﻿<?php include "./php/header.php" ?>
 
-
-
 <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
@@ -32,8 +30,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -50,16 +46,14 @@
                     $_SESSION['error'] = "heloo";
                     if (isset($_SESSION['error'])) {
 
-                        echo "<script>
-                        test();
-                    </script>";
-                        //     echo " <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        // <strong>Error!</strong> A <a href='#' class='alert-link'>problem</a> has been occurred
-                        // while submitting your data." . $_SESSION['error'] . "
-                        // <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        // <span aria-hidden='true'>&times;</span>
-                        // </button>
-                        // </div> ";
+
+                        echo " <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>Error!</strong> A <a href='#' class='alert-link'>problem</a> has been occurred
+                        while submitting your data." . $_SESSION['error'] . "
+                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                        </button>
+                         </div> ";
                         unset($_SESSION['error']);
                     }
 
@@ -105,71 +99,29 @@
 
 
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Address line:</label>
+                                                <input type="text" class="form-control" name="address">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Phone:</label>
+                                                <input type="text" class="form-control" name="phone">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
-                                        <label>batiment:</label>
-                                        <select name="ajouterB" id="ajouterB" class="form-control"
-                                            onchange="myFunction()">
-
-
-                                            <option value="0">Select Batimen</option>
-                                            <?php
-                                            $query = "SELECT * FROM batiment ";
-                                            $data = dataAccess::desplaydata($query);
-
-                                            while ($row_batiment = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
-                                                $id_batiment = $row_batiment[0];
-                                                $nom_batiment = $row_batiment[1];
-
-                                            ?>
-
-
-                                            <option value="<?php echo $id_batiment ?>"><?php echo $nom_batiment ?>
-                                            </option>
-
-
-                                            <?php } ?>
-                                            <option value="ajouter">ajouter</option>
-                                        </select>
-                                    </div>
-                                    <div id="app" class="form-group">
-
-
+                                        <label>date de enter:</label>
+                                        <input type="date" class="form-control" name="date_enter">
                                     </div>
 
-                                    <div id="appar" style="display : none ;" class="form-group">
-                                        <label>apparemt:</label>
-                                        <input type="text" class="form-control" name="appear">
-
-
-
-                                    </div>
-
-                                    <script>
-                                    function myFunction() {
-                                        var x = document.getElementById("ajouterB").value;
-                                        if (x == "0") {
-                                            document.getElementById("app").innerHTML = " ";
-                                            document.getElementById("appar").style.display = "none";
-
-                                        } else {
-                                            document.getElementById("app").innerHTML = " ";
-                                            document.getElementById("appar").style.display = "block";
-
-                                        }
-
-
-                                        if (x == 'ajouter') {
-                                            document.getElementById("app").innerHTML =
-                                                "  <label>nom batimen:</label><input type='text' name='batimentN' class='form-control' id='batimentN'>";
-                                            document.getElementById("appar").style.display = "block";
-
-                                        }
-
-                                    }
-                                    </script>
                                 </div>
                                 <div class="col-md-6">
                                     <h4 class="card-title">Personal details</h4>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -185,38 +137,89 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Email:</label>
-                                                <input type="text" class="form-control">
+                                                <label>batiment:</label>
+                                                <select name="ajouterB" id="ajouterB" class="form-control"
+                                                    onchange="myFunction()">
+
+
+                                                    <option value="0">Select Batimen</option>
+                                                    <?php
+                                                    $query = "SELECT * FROM batiment ";
+                                                    $data = dataAccess::desplaydata($query);
+
+                                                    while ($row_batiment = $data->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+                                                        $id_batiment = $row_batiment[0];
+                                                        $nom_batiment = $row_batiment[1];
+
+                                                    ?>
+
+                                                    <option value="<?php echo $id_batiment ?>">
+                                                        <?php echo $nom_batiment ?>
+                                                    </option>
+
+                                                    <?php } ?>
+                                                    <option value="ajouter">ajouter</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group" id="appar" style="display : none ;">
+                                                <label>apparemt:</label>
+                                                <input type="text" class="form-control" name="appear">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Phone:</label>
-                                                <input type="text" class="form-control" name="phone">
+                                            <div class="form-group" id="appar2" style="display : none ;">
+                                                <label>cout par mois:</label>
+                                                <input type="text" class="form-control" name="cout">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address line:</label>
-                                                <input type="text" class="form-control" name="address">
+                                            <div id="app" class="form-group">
+
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="text-right">
-
-
                                 <button id="ajouteC" name="ajouteC" onclick="test();" type="submit"
                                     class="btn btn-primary">Submit</button>
                             </div>
                         </form>
+
+                        <script>
+                        function myFunction() {
+                            var x = document.getElementById("ajouterB").value;
+                            if (x == "0") {
+                                // document.getElementById("app").innerHTML = " ";
+                                document.getElementById("appar").style.display = "none";
+                                document.getElementById("appar2").style.display = "none";
+                            } else {
+                                // document.getElementById("app").innerHTML = " ";
+                                document.getElementById("appar").style.display = "block";
+                                document.getElementById("appar2").style.display = "block";
+                            }
+
+
+                            if (x == 'ajouter') {
+                                document.getElementById("app").innerHTML =
+                                    "  <label>nom batimen:</label><input type='text' name='batimentN' class='form-control' id='batimentN'>";
+                                document.getElementById("appar").style.display = "block";
+                                document.getElementById("appar2").style.display = "block";
+
+                            }
+
+                        }
+                        </script>
+
                     </div>
                 </div>
             </div>

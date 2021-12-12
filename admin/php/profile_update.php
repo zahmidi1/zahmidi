@@ -28,9 +28,9 @@ if (isset($_POST['submit'])) {
 
 	$query = dataAccess::update($sql);
 	if (!empty($query)) {
-		$_SESSION['success'] = 'Profil administrateur mis à jour avec succès';
+		$_SESSION['success'] = 'Profil ' . $row_admin[7] . ' mis à jour avec succès';
 	} else {
-		$_SESSION['error'] = " erreur de mise à jour voutre Profil administrateur";
+		$_SESSION['error'] = " erreur de mise à jour voutre Profil '.$row_admin[7].'";
 	}
 	header('location:../profile');
 	return;
@@ -50,12 +50,12 @@ if (isset($_POST['savePaswored'])) {
 		$sql = "UPDATE users SET   paswored = '$password' WHERE `users`.`id_user` = $row_admin[0] ";
 		$query = dataAccess::update($sql);
 		if (!empty($query)) {
-			$_SESSION['success'] = 'update paswored';
+			$_SESSION['success'] = 'mise à jour du Mot de passe réussie';
 		} else {
-			$_SESSION['error'] = "not update paswored ";
+			$_SESSION['error'] = "La mise à jour du mot de passe n'a pas réussi";
 		}
 	} else {
-		$_SESSION['error'] = 'Incorrect password';
+		$_SESSION['error'] = 'Mot de passe incorrect';
 	}
 	header('location:../profile');
 } else {

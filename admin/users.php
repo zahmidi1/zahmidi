@@ -51,8 +51,7 @@
 
                     if (isset($_SESSION['error'])) {
                         echo " <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-					<strong>Error!</strong> A <a href='#' class='alert-link'>problem</a> has been occurred
-					while submitting your data." . $_SESSION['error'] . "
+					<strong>Error!</strong>" . $_SESSION['error'] . "
 					<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 					<span aria-hidden='true'>&times;</span>
 					</button>
@@ -65,8 +64,7 @@
                         echo "
 					
 					<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                    <strong>Success!</strong> Your <a href='#' class='alert-link'>message</a> has been sent
-                    successfully." . $_SESSION['success'] . "
+                    <strong>Success!</strong> " . $_SESSION['success'] . "
                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                     </button>
@@ -171,27 +169,22 @@
         $sql = "UPDATE `users` SET `status` = '0' WHERE `users`.`id_user` = $id_active; ";
         $query = dataAccess::update($sql);
         if (!empty($query)) {
-            $_SESSION['success'] = 'update status';
-            echo "ok";
+            $_SESSION['success'] = 'mise à jour du statut';
         } else {
 
-            $_SESSION['error'] = "not update satatus ";
-            echo "no";
+            $_SESSION['error'] = "statut non mis à jour ";
         }
         header('location:users');
     }
-
 
     if (isset($_GET['noactive'])) {
         $id_noactive = $_GET['noactive'];
         $sql = "UPDATE `users` SET `status` = '1' WHERE `users`.`id_user` = $id_noactive; ";
         $query = dataAccess::update($sql);
         if (!empty($query)) {
-            $_SESSION['success'] = 'update status';
-            echo "ok";
+            $_SESSION['success'] = 'mise à jour du statut';
         } else {
-            $_SESSION['error'] = "not update satatus ";
-            echo "no";
+            $_SESSION['error'] = "statut non mis à jour ";
         }
         header('location:users');
     }
